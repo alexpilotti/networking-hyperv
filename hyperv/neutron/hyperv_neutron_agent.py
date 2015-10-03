@@ -133,7 +133,7 @@ networking-plugin-hyperv_agent.html
 
         self._nvgre_enabled = True
         self._nvgre_ops = nvgre_ops.HyperVNvgreOps(
-            self._physical_network_mappings.values())
+            list(self._physical_network_mappings.values()))
 
         self._nvgre_ops.init_notifier(self.context, self.client)
         self._nvgre_ops.tunnel_update(self.context,
@@ -171,7 +171,7 @@ networking-plugin-hyperv_agent.html
         return phys_network_name
 
     def _get_network_vswitch_map_by_port_id(self, port_id):
-        for network_id, map in self._network_vswitch_map.iteritems():
+        for network_id, map in self._network_vswitch_map.items():
             if port_id in map['ports']:
                 return (network_id, map)
 

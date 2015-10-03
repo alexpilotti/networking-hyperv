@@ -172,7 +172,7 @@ class SecurityGroupRuleGeneratorR2(SecurityGroupRuleGenerator):
         protocol = self._get_rule_protocol(rule)
         if protocol == ACL_PROP_MAP['default']:
             # ANY protocols must be split up, to make stateful rules.
-            protocols = ACL_PROP_MAP['protocol'].values()
+            protocols = list(ACL_PROP_MAP['protocol'].values())
         else:
             protocols = [protocol]
 
